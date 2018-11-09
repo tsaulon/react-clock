@@ -4,6 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+function TestIsolation() {
+    return (
+        <div>
+            <Clock />
+            <Clock />
+            <Clock />
+        </div>
+    )
+}
+
 class Clock extends React.Component {
 
     constructor(props) {
@@ -25,6 +35,7 @@ class Clock extends React.Component {
     tick() {
         //  Note:   >   Do not modify state directly
         //          >   Best practice is to use setState()
+        //          >   setState() may be asynchronous
         this.setState({
             date: new Date()
         })
@@ -40,7 +51,7 @@ class Clock extends React.Component {
     }
 }
 
-ReactDOM.render(<Clock />, document.getElementById('root'));
+ReactDOM.render(<TestIsolation />, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change
